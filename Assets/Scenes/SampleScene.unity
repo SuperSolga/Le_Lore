@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44619095, g: 0.49597198, b: 0.5745752, a: 1}
+  m_IndirectSpecularColor: {r: 0.17999302, g: 0.2253634, b: 0.30673838, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5737,7 +5737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4b4999835d7fd4ab0f2b8ee73d036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 200
   playerBody: {fileID: 363121154}
 --- !u!114 &1425995082
 MonoBehaviour:
@@ -6074,7 +6074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 2b68b8346304cf04695b45f74e033fe6, type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -6091,7 +6091,19 @@ MonoBehaviour:
     m_ActionId: 5706d145-d822-4c28-b1ae-cb15bc775277
     m_ActionName: Usp/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1425995082}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: StartReload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 87bfa57b-a477-4b1c-bcd8-b936e0da2978
     m_ActionName: Usp/Reload[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0

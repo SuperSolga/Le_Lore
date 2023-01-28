@@ -40,18 +40,6 @@ public class Gun : MonoBehaviour
             isShooting = false;
         }
 
-
-        /*if(Input.GetKeyDown("r") && !isShooting && !isReloading)
-        {
-            isReloading = true;
-            Reload();
-        }
-        else
-        {
-            animator.SetBool("Reload", false);
-            isReloading = false;
-        }*/
-
     }
 
     IEnumerator Shoot()
@@ -73,10 +61,18 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void Reload(InputAction.CallbackContext context)
+    public void StartReload()
     {
-        //animator.SetBool("Reload", true);
-        if (context.performed) { Debug.Log("Reload" + context.phase); }
+        animator.SetBool("Reload", true);
+        Invoke("StopReload", 2f);
+        isReloading= true;
+        Debug.Log("reload");
+    }
 
+    public void StopReload()
+    {
+        Debug.Log("stop reload!");
+        animator.SetBool("Reload", false);
+        isReloading= false;
     }
 }
