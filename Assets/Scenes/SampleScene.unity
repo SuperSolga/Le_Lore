@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.6
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -7420,6 +7420,7 @@ GameObject:
   - component: {fileID: 1619283710019661657}
   - component: {fileID: 1619283710019661658}
   - component: {fileID: 1619283710019661659}
+  - component: {fileID: 5121239691745143038}
   m_Layer: 0
   m_Name: Mastodonte
   m_TagString: Untagged
@@ -8685,6 +8686,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5121239691745143038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925763991386466365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0351007cd5da2f46b5394b9c7dc0949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1
+  desiredVelocity: 1
+  path: 1
 --- !u!4 &5160828846703992836
 Transform:
   m_ObjectHideFlags: 0
