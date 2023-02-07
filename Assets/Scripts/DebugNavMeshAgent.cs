@@ -14,7 +14,7 @@ public class DebugNavMeshAgent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();   
     }
 
     // Update is called once per frame
@@ -32,6 +32,7 @@ public class DebugNavMeshAgent : MonoBehaviour
         }
 
         if (path) {
+            Gizmos.color = Color.black;
             var agentPath = agent.path;
             Vector3 prevCorner = transform.position;
             foreach(var corner in agentPath.corners)
