@@ -9,7 +9,7 @@ public class DebugNavMeshAgent : MonoBehaviour
     public bool desiredVelocity;
     public bool path;
 
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class DebugNavMeshAgent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void OnDrawGizmos()
     {
         if (velocity) { 
             Gizmos.color = Color.green;

@@ -1,6 +1,9 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -8,11 +11,14 @@ public class Gun : MonoBehaviour
     public float range = 100f;
 
     public Camera fpsCam;
+    public GameObject chargerUI;
+    private TextMeshPro text;
     private Animator animator;
     private PlayerInput playerInput;
 
     [Header("Shooting")]
     public int maxAmmo;
+    private int ammo;
     public int shotPerSecond;
     public float reloadSpeed;
 
@@ -21,15 +27,19 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
+        ammo = maxAmmo;
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        // text = chargerUI.Find("Test").GetComponent<TextMeshPro>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && !isShooting && !isReloading)
+        text.text = ammo.ToString()+ "/" + maxAmmo.ToString();
+
+        if(Input.GetButtonDown("Fire1") && !isShooting && !isReloading && ammo > 0)
         {
             isShooting = true;
             StartCoroutine(Shoot());
@@ -51,6 +61,7 @@ public class Gun : MonoBehaviour
             Debug.Log(hit.point);
 
             animator.SetBool("Usp1", true);
+            ammo -= 1;
 
             Target target = hit.transform.GetComponent<Target>();
             if(target != null)
@@ -73,6 +84,7 @@ public class Gun : MonoBehaviour
     {
         Debug.Log("stop reload!");
         animator.SetBool("Reload", false);
+        ammo = maxAmmo;
         isReloading= false;
     }
 }
