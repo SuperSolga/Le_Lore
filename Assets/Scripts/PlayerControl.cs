@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    private float horizontalInput;
-    private float forwardInput;
-    public float speed = 5.0f;
+    public float speed;
+
+    private Rigidbody rig;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Camera.main.enabled = false;
+        rig = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        float hMove = Input.GetAxis("Horizontal");
+        float vMove = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
-        transform.eulerAngles = Vector3.zero;
+        Vector3 move = new Vector3(hMove, 0, vMove);
+        move.Normalize();
 
+        rig.velocity = move * speed * Time.deltaTime;
     }
 }
