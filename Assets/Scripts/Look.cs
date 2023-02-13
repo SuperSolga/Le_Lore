@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
+    public static bool cursorLocked = true;
 
     public Transform player;
     public Transform cams;
@@ -24,6 +25,8 @@ public class Look : MonoBehaviour
     void Update()
     {
         SetY();
+        SetX();
+        UpdateCursorLock();
     }
 
     void SetY ()
@@ -35,6 +38,34 @@ public class Look : MonoBehaviour
         if (Quaternion.Angle(camCenter, delta) < maxAngle)
         {
             cams.localRotation = delta;
+        }
+    }
+
+    void SetX ()
+    {
+        float input = Input.GetAxis("Mouse X") * xSensitivity * Time.deltaTime;
+        Quaternion adjust = Quaternion.AngleAxis(input, Vector3.up);
+        Quaternion delta = player.localRotation * adjust;
+
+        player.localRotation = delta;
+    }
+
+    void UpdateCursorLock()
+    {
+        if (cursorLocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                cursorLocked = false;
+            }
+        } 
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
