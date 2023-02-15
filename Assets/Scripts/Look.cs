@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
+    #region Variables
+
     public static bool cursorLocked = true;
 
     public Transform player;
     public Transform cams;
+    public Transform weapon;
 
     public float xSensitivity;
     public float ySensitivity;
@@ -15,13 +18,13 @@ public class Look : MonoBehaviour
 
     private Quaternion camCenter;
 
-    // Start is called before the first frame update
+    #endregion
+
     void Start()
     {
         camCenter = cams.localRotation;
     }
 
-    // Update is called once per frame
     void Update()
     {
         SetY();
@@ -39,6 +42,8 @@ public class Look : MonoBehaviour
         {
             cams.localRotation = delta;
         }
+
+        weapon.rotation = cams.rotation;
     }
 
     void SetX ()

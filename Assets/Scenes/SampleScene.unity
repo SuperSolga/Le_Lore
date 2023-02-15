@@ -937,6 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 570911862}
   cams: {fileID: 1727075318}
+  weapon: {fileID: 1973395135}
   xSensitivity: 350
   ySensitivity: 100
   maxAngle: 60
@@ -953,7 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadout:
-  - {fileID: 5409830549329469772, guid: 9868d4388bd7cad43b336704ebfe0aee, type: 3}
+  - {fileID: 11400000, guid: 531157a845742904a966ae3c7080cd69, type: 2}
   weaponParent: {fileID: 1973395135}
 --- !u!1 &573875304
 GameObject:
@@ -2588,8 +2589,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973395134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.48899996, z: -0.033000946}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

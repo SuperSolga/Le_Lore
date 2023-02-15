@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public GameObject[] loadout;
+    public Gun[] loadout;
     public Transform weaponParent;
 
     private GameObject currentObject;
@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
     { 
         if(currentObject != null) Destroy(currentObject);
 
-        GameObject newEquipment = Instantiate(loadout[index], weaponParent.position, weaponParent.rotation, weaponParent) as GameObject;
+        GameObject newEquipment = Instantiate(loadout[index].prefab, weaponParent.position, weaponParent.rotation, weaponParent) as GameObject;
         newEquipment.transform.localPosition = Vector3.zero;
         newEquipment.transform.localEulerAngles = Vector3.zero;
 
