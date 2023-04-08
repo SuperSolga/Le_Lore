@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    #region Variable
     public float speed;
     public float sprintSpeed;
     public float jumpForce;
@@ -15,8 +16,9 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody rig;
     private float baseFOV = 60f;
     private float sprintFOV = 1.25f;
+    #endregion
 
-    // Start is called before the first frame update
+    #region MonoBehavior Callbacks
     void Start()
     {
         baseFOV = normalCam.fieldOfView;
@@ -24,7 +26,27 @@ public class PlayerControl : MonoBehaviour
         rig = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        //Input
+        float hMove = Input.GetAxisRaw("Horizontal");
+        float vMove = Input.GetAxisRaw("Vertical");
+
+        //Controls
+        bool sprint = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        bool jump = Input.GetKey(KeyCode.Space);
+
+        bool isGrounded = Physics.Raycast(groundDetector.position, Vector3.down, 0.1f, ground);
+        bool isJumping = jump && isGrounded;
+        bool isSprinting = sprint && vMove > 0 && !isJumping;
+
+        //Jump
+        if (isJumping)
+        {
+            rig.AddForce(Vector3.up * jumpForce);
+        }
+    }
+
     void FixedUpdate()
     {
         //Input
@@ -43,12 +65,6 @@ public class PlayerControl : MonoBehaviour
         Vector3 move = new Vector3(hMove, 0, vMove);
         move.Normalize();
 
-        //Jump
-        if(isJumping)
-        {
-            rig.AddForce(Vector3.up * jumpForce);
-        }
-
         //Sprint, Walk
         float finalSpeed = speed;
         if (isSprinting)
@@ -66,4 +82,5 @@ public class PlayerControl : MonoBehaviour
         targetVelocity.y = rig.velocity.y;
         rig.velocity = targetVelocity;
     }
+    #endregion
 }

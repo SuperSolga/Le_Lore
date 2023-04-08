@@ -6,6 +6,8 @@ using UnityEngine;
 public class Gun : ScriptableObject
 {
     public string Name;
+    public float fireRate;
+    public float aimSpeed;
     public GameObject prefab;
     //Add more caracteristic inside the script
 }

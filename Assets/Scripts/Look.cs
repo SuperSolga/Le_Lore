@@ -20,6 +20,7 @@ public class Look : MonoBehaviour
 
     #endregion
 
+    #region MonoBehavior Callback
     void Start()
     {
         camCenter = cams.localRotation;
@@ -31,7 +32,9 @@ public class Look : MonoBehaviour
         SetX();
         UpdateCursorLock();
     }
+    #endregion
 
+    #region Private Methods
     void SetY ()
     {
         float input = Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime;
@@ -73,4 +76,5 @@ public class Look : MonoBehaviour
             Cursor.visible = true;
         }
     }
+    #endregion
 }

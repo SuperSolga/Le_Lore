@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    #region Variables
     public Gun[] loadout;
     public Transform weaponParent;
 
     private GameObject currentObject;
+    #endregion
 
-    void Start()
-    {
-        
-    }
-
+    #region MonoBehavior Callbacks
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) Equip(0);
     }
+    #endregion
 
+    #region Private Methods
     void Equip(int index) 
     { 
         if(currentObject != null) Destroy(currentObject);
@@ -29,4 +29,5 @@ public class Weapon : MonoBehaviour
 
         currentObject= newEquipment;
     }
+    #endregion
 }
